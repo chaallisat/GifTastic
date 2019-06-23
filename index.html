@@ -7,12 +7,36 @@
     <title>Old Skool Cartoon Gifs</title>
 
     <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- Add Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
     
-    <div></div>
+    <div class="container">
+
+        <div class="row">
+            <div id="button-view" class="col-sm-12"></div>
+        </div>
+
+        <div class="row">
+            <!-- All GIFs will appear here -->
+            <div id="view-gifs" class="col-sm-8"></div>
+            <!-- The form for new topics will appear here -->
+            <div class="col-sm-4">
+                <form id="user-text">
+                    <label for="topic-input">Add a Cartoon</label>
+                    <br>
+                    <input type="text" id="topic-input">
+                    <br>
+                    <!-- Button will add new topics -->
+                    <input id="add-topic" type="submit" value="Add a Cartoon">
+                </form>
+            </div>
+        </div>
+
+    </div>
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/javascript/app.js"></script>
