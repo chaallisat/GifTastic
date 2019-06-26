@@ -46,7 +46,7 @@ function renderButtons() {
 }
 
 //on button click, 10 static, non-animated gifs should append to page
-$("#add-topic").on("click", function(event){
+/*$("#add-topic").on("click", function(event){
     event.preventDefault();
 
     //This should grab the new topic from user
@@ -55,7 +55,7 @@ $("#add-topic").on("click", function(event){
     //Add the topic to our array
     topics.push(userTopic);
     renderButtons();
-})
+})*/
 
 $(document).on("clcik", ".gif-btn", displayGifs);
 renderButtons();
