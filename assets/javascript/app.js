@@ -12,12 +12,13 @@ function displayGifs() {
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        
+        console.log(response)
         //Create a div to hold the gifs
         const gifDiv = $("<div class='gif'>");
         
         //Storing the rating
-        const rating = response.Rated;
+        const rating = response.data[0].rating;
+        console.log(rating);
         
         //Creating an element to display rating
         const ratingDiv = $("<p>").text("Rating: " + rating);
@@ -26,6 +27,7 @@ function displayGifs() {
         //under every gif, display its rating
         gifDiv.append(ratingDiv);
         $("#view-gifs").prepend(gifDiv);
+
     });
             
 }
@@ -57,7 +59,9 @@ function renderButtons() {
     renderButtons();
 })*/
 
-$(document).on("clcik", ".gif-btn", displayGifs);
+$(document).on("click", ".gif-btn", displayGifs);
+
+
 renderButtons();
 
 //on gif click, gif should animate
