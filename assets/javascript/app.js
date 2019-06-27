@@ -17,16 +17,24 @@ function displayGifs() {
         const gifDiv = $("<div class='gif'>");
         
         //Storing the rating
-        const rating = response.data[0].rating;
-        console.log(rating);
+        for(i = 0; i < response.data.length; i++) {
+            const rating = response.data[i].rating;
+            console.log(rating);
+
+            //Get the gifs
+            
+            //Creating an element to display rating
+            const ratingDiv = $("<p>").text("Rated: " + rating);
+            //Display the rating
+            //under every gif, display its rating
+            gifDiv.append(ratingDiv);
+            $("#view-gifs").prepend(gifDiv);
+            
+
+        }
+        //test to display gifs
+        $("#view-gifs").append(response.data[0].images);
         
-        //Creating an element to display rating
-        const ratingDiv = $("<p>").text("Rating: " + rating);
-        
-        //Display the rating
-        //under every gif, display its rating
-        gifDiv.append(ratingDiv);
-        $("#view-gifs").prepend(gifDiv);
 
     });
             
