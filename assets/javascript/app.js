@@ -6,45 +6,50 @@ function displayGifs() {
 
     const gifs = $(this).attr("data-name");
     const queryURL = "https://api.giphy.com/v1/gifs/search?api_key=8iYztG9g8pKSpLVmvZma6qEoSc9e2dxw&q=" + gifs + "&limit=10&lang=en"
-    
+
     //create an AJAX call for the specific topic button being clicked
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response)
         //Create a div to hold the gifs
         const gifDiv = $("<div class='gif'>");
-        
+
         //Storing the rating
-        for(i = 0; i < response.data.length; i++) {
+        for (i = 0; i < response.data.length; i++) {
             const rating = response.data[i].rating;
             console.log(rating);
 
             //Get the gifs
-            
+            const giphy = response.data[i].images.original.url;
+           // console.log(giphy);
+            const imgDiv = $("<img class='image'>")
+            imgDiv.append(giphy);
+
             //Creating an element to display rating
             const ratingDiv = $("<p>").text("Rated: " + rating);
             //Display the rating
             //under every gif, display its rating
             gifDiv.append(ratingDiv);
+            gifDiv.prepend(imgDiv);
             $("#view-gifs").prepend(gifDiv);
-            
+
 
         }
         //test to display gifs
-        $("#view-gifs").append(response.data[0].images);
-        
+        $("#view-gifs").append(response.data[0].images.original_still);
+        //console.log(response.data[0].images);
 
     });
-            
+
 }
 
 
 //Function to display the gifs
 function renderButtons() {
     $("#button-view").empty();
-    
+
     //create buttons from the topics | a loop might help
     for (let i = 0; i < topics.length; i++) {
         const bb = $("<button>");
