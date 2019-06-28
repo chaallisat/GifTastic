@@ -12,33 +12,38 @@ function displayGifs() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
+        //console.log(response)
         //Create a div to hold the gifs
         const gifDiv = $("<div class='gif'>");
 
         //Storing the rating
         for (i = 0; i < response.data.length; i++) {
             const rating = response.data[i].rating;
-            console.log(rating);
+           // console.log(rating);
 
             //Get the gifs
             const giphy = response.data[i].images.original.url;
-           // console.log(giphy);
+
+           //create an image div
             const imgDiv = $("<img class='image'>")
-            imgDiv.append(giphy);
+            imgDiv.attr("src", giphy)
+
 
             //Creating an element to display rating
             const ratingDiv = $("<p>").text("Rated: " + rating);
             //Display the rating
             //under every gif, display its rating
             gifDiv.append(ratingDiv);
-            gifDiv.prepend(imgDiv);
+            gifDiv.append(imgDiv);
+           // gifDiv.prepend(imgDiv);
             $("#view-gifs").prepend(gifDiv);
 
+            //console.log(giphy);
+           //$("#view-gifs").prepend(imgDiv)
+           
 
-        }
-        //test to display gifs
-        $("#view-gifs").append(response.data[0].images.original_still);
+        } 
+        
         //console.log(response.data[0].images);
 
     });
@@ -61,7 +66,7 @@ function renderButtons() {
 }
 
 //on button click, 10 static, non-animated gifs should append to page
-/*$("#add-topic").on("click", function(event){
+$("#add-topic").on("click", function(event){
     event.preventDefault();
 
     //This should grab the new topic from user
@@ -70,7 +75,7 @@ function renderButtons() {
     //Add the topic to our array
     topics.push(userTopic);
     renderButtons();
-})*/
+})
 
 $(document).on("click", ".gif-btn", displayGifs);
 
