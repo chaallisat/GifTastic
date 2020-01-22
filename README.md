@@ -4,9 +4,9 @@ To view this site live, go to https://chaallisat.github.io/GifTastic/
 
 ## Getting Started
 To download a copy of this project: 
+
     git clone https://github.com/chaallisat/GifTastic.git
     cd giftastic
-
     Then open the project in your browser. 
 
 
